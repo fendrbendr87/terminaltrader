@@ -61,3 +61,11 @@ if __name__ == "__main__":
                     quote = model.quote(ticker_symbol)
                     view.display_quote(ticker_symbol, quote)
                     view.pause()
+                elif option.strip() == '6':
+                    account_pk = pk
+                    keyfromuser = model.getkeyfromuser(account_pk)
+                    view.show_key(keyfromuser)
+                    view.pause()
+                #elif option.strip() == '6':
+                #THIS SHOULD BE WHERE YOU GET API KEY
+                #HAVE TO MAKE IT ON THE SIDE OF VIEW AS WELL AS MODEL
