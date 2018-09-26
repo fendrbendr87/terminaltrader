@@ -23,3 +23,16 @@ class RegistrationForm(FlaskForm):
         if username is not None:
             raise ValidationError('Please use a different email address.')
  
+    def validate_email(self, email):
+        user = accounts.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different email address.')
+
+#TODO WORK ON THIS!!!
+class BuyForm(FlaskForm):
+    tickersymbol=StringField('Ticker Symbol', validators=[DataRequired()])
+    numberofshares=StringField('Number of Shares', validators=[DataRequired()])
+    submit=SubmitField('Buy')
+
+    def validate_trade(self, numberofshares, tickersymbol):
+        pass

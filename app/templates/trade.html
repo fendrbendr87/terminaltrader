@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello, {{ current_user.username }}!</h1>
+    <h1>{{ current_user.username }}, would you like to BUY or SELL?</h1>
     <div><p><b>{{ balances }}</b></p></div>
     {% for holding in userholdings %}
     <div><p>{{ holding.ticker_symbol }} number of shares: <b>{{ holding.number_of_shares }}</b></p></div>
