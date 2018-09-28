@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ current_user.username }}, would you like to BUY or SELL?</h1>
-    <div><p><b>{{ balances }}</b></p></div>
-    {% for holding in userholdings %}
-    <div><p>{{ holding.ticker_symbol }} number of shares: <b>{{ holding.number_of_shares }}</b></p></div>
-    {% endfor %}
-    {% for orders in orderhistory %}
-    <div><p>time: {{ orders.timestamp }}, number of shares: {{ orders.trade_volume }} price: {{ orders.last_price }}</p></div>
-    {% endfor %}
+    <h1>Hello, {{ current_user.username }}, would you like to BUY or SELL?</h1>
+    <form method="post">
+        
+        {{ form.example }}
+        <input type="submit">
+    </form>
+
 {% endblock %}

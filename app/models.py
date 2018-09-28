@@ -4,6 +4,7 @@ from app import db
 from flask_login import UserMixin
 from app import login
 
+
 class accounts(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -32,7 +33,7 @@ class holdings(db.Model):
     account_pk=db.Column(db.Integer, db.ForeignKey('accounts.id'))
 
     def __repr__(self):
-        return '<holdings> ticker_symbol: {}, shares: {}, VWAP: {}'.format(self.ticker_symbol, self.number_of_shares, self.volume_weighted_average_price)
+        return '<holdings> ticker_symbol: {}, number_of_shares: {}, VWAP: {}'.format(self.ticker_symbol, self.number_of_shares, self.volume_weighted_average_price)
 
 
 class orders(db.Model):
