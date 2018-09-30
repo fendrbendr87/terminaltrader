@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, RadioField, Form
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import accounts
 
@@ -29,10 +29,11 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 #TODO WORK ON THIS!!!
-class BuyForm(FlaskForm):
-    tickersymbol=StringField('Ticker Symbol', validators=[DataRequired()])
-    numberofshares=StringField('Number of Shares', validators=[DataRequired()])
-    submit=SubmitField('Buy')
+class TradeType(Form):
+    TType = RadioField('Label', choices=[('BUY', 'BUY'),('SELL', 'SELL')])
+    submit = SubmitField('Submit Trade')
 
-    def validate_trade(self, numberofshares, tickersymbol):
-        pass
+class TradeForm(Form):
+    ticker_symbol = StringField('Ticker Symbol', validators=[DataRequired()])
+    number_of_shares = IntegerField('Number of Shares', validators=[DataRequired()])
+    submit = SubmitField('Submit Trade')

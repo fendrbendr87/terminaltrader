@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    <div><p><b>Here is your order history:</b></p></div>
+    {% for orders in orderhistory %}
+    <div><p>time: {{ orders.timestamp }}, number of shares: {{ orders.trade_volume }} price: {{ orders.last_price }}</p></div>
+    {% endfor %}
+{% endblock %}

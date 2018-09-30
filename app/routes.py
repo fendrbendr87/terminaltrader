@@ -1,7 +1,7 @@
 from app import app, db
 from app import model, models
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, TradeForm, TradeType
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import accounts, holdings, orders
 from werkzeug.urls import url_parse
@@ -12,25 +12,28 @@ import requests
 import json
 
 
-class SimpleForm(Form):
-    example = RadioField('Label', choices=[('value','description'),('value_two','whatever')])
-
-
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    sell(current_user, 'AAPL', 1)
-    return render_template("index.html", title='Home', userholdings=get_holdings(current_user), balances=get_user_balance(current_user), orderhistory=get_orders(current_user))
+    return render_template("index.html", title='Home', balances=round(get_user_balance(current_user), 2))
+
+@app.route('/holdings', methods=['GET'])
+@login_required
+def uholdings():
+    return render_template("holdings.html", title='Holdings', userholdings=get_holdings(current_user))
+
+@app.route('/orderhistory', methods=['GET'])
+@login_required
+def orderhistory():
+    return render_template("orderhistory.html", title='Order History', orderhistory=get_orders(current_user))
 
 #TODO WORK ON THIS!!!!!
 @app.route('/trade', methods=['GET', 'POST'])
 @login_required
 def trade():
-    form = SimpleForm()
-    #currentuser = accounts.query.filter_by(username=current_user.username).first()
-
-    return render_template("trade.html", title='Trade', form=form)
+    form = TradeType()
+    return render_template("trade.html", title='Trade', form=form, balance=round(get_user_balance(current_user), 2))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -54,6 +57,7 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 
 @app.route('/register', methods=['GET', 'POST'])

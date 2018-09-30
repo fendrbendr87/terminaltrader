@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    <div><p><b>Here are your current holdings:</b></p></div>
+    {% for holding in userholdings %}
+    <div><p>{{ holding.ticker_symbol }} number of shares: <b>{{ holding.number_of_shares }}</b></p></div>
+    {% endfor %}
+{% endblock %}
