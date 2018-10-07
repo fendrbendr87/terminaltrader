@@ -1,0 +1,72 @@
+2018-10-06 21:01:33,414 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
+2018-10-06 21:01:51,152 ERROR: Exception on /reset_password_request [POST] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 87, in reset_password_request
+    user = User.query.filter_by(email=form.email.data).first()
+NameError: global name 'User' is not defined
+2018-10-06 21:02:38,887 ERROR: Exception on /reset_password_request [POST] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 87, in reset_password_request
+    user = User.query.filter_by(email=form.email.data).first()
+NameError: global name 'User' is not defined
+2018-10-06 21:03:33,488 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
+2018-10-06 21:03:40,907 ERROR: Exception on /reset_password_request [POST] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 89, in reset_password_request
+    send_password_reset_email(user)
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/email.py", line 12, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/models.py", line 28, in get_reset_password_token
+    return jwt.encode(
+NameError: global name 'jwt' is not defined
+2018-10-06 21:04:42,185 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
+2018-10-06 21:04:49,047 ERROR: Exception on /reset_password_request [POST] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 89, in reset_password_request
+    send_password_reset_email(user)
+  File "/mnt/c/Users/GM/Desktop/webtrader/app/email.py", line 14, in send_password_reset_email
+    sender=app.config['ADMINS'][0],
+NameError: global name 'app' is not defined
+2018-10-06 21:05:36,698 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
+2018-10-06 21:06:30,979 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
+2018-10-06 21:07:45,927 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]

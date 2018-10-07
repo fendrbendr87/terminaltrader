@@ -28,12 +28,18 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
-#TODO WORK ON THIS!!!
-class TradeType(Form):
-    TType = RadioField('Label', choices=[('BUY', 'BUY'),('SELL', 'SELL')])
-    submit = SubmitField('Submit Trade')
 
-class TradeForm(Form):
+class TradeForm(FlaskForm):
     ticker_symbol = StringField('Ticker Symbol', validators=[DataRequired()])
     number_of_shares = IntegerField('Number of Shares', validators=[DataRequired()])
     submit = SubmitField('Submit Trade')
+
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Request Password Reset')
