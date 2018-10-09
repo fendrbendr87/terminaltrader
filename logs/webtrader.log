@@ -70,3 +70,4 @@ NameError: global name 'app' is not defined
 2018-10-06 21:05:36,698 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
 2018-10-06 21:06:30,979 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
 2018-10-06 21:07:45,927 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:48]
+2018-10-09 18:43:18,877 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]

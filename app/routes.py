@@ -1,5 +1,5 @@
 from app import app, db
-from app import model, models
+from app import models
 from flask import render_template, flash, redirect, url_for, request
 from app.forms import LoginForm, RegistrationForm, TradeForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -40,7 +40,7 @@ def orderhistory():
 def buy():
     form = TradeForm()
     if form.validate_on_submit():
-        user_buy = buy(current_user=current_user, ticker_symbol=form.ticker_symbol.data, number_of_shares=form.number_of_shares.data)
+        user_buy = buy_stock(current_user=current_user, ticker_symbol=form.ticker_symbol.data, number_of_shares=form.number_of_shares.data)
         if user_buy == True:
             flash('Your order was successful!')
             return redirect(url_for('orderconf'))
@@ -53,7 +53,7 @@ def buy():
 def sell():
     form = TradeForm()
     if form.validate_on_submit():
-        user_sell = sell(current_user=current_user, ticker_symbol=form.ticker_symbol.data, number_of_shares=form.number_of_shares.data)
+        user_sell = sell_stock(current_user=current_user, ticker_symbol=form.ticker_symbol.data, number_of_shares=form.number_of_shares.data)
         if user_sell == True:
             flash('Your order was successful!')
             return redirect(url_for('orderconf'))
@@ -114,7 +114,7 @@ def register():
 def reset_password(token):
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    user = User.verify_reset_password_token(token)
+    user = accounts.verify_reset_password_token(token)
     if not user:
         return redirect(url_for('index'))
     form = ResetPasswordForm()
@@ -178,7 +178,7 @@ def create_order(current_user, ticker_symbol, trade_volume, last_price):
     db.session.commit()
     
 
-def buy(current_user, ticker_symbol, number_of_shares):
+def buy_stock(current_user, ticker_symbol, number_of_shares):
     holding = get_holding(current_user, ticker_symbol)
     stock_price = quote(ticker_symbol)
     if get_user_balance(current_user) > (stock_price * number_of_shares):
@@ -194,7 +194,7 @@ def buy(current_user, ticker_symbol, number_of_shares):
     else:
         return False
 
-def sell(current_user, ticker_symbol, number_of_shares):
+def sell_stock(current_user, ticker_symbol, number_of_shares):
     number_of_current_shares = get_holding(current_user, ticker_symbol)
     if number_of_current_shares == None:
         return False
