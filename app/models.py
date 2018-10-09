@@ -38,7 +38,7 @@ class accounts(UserMixin, db.Model):
                             algorithms=['HS256'])['reset_password']
         except:
             return
-        return User.query.get(id)
+        return accounts.query.get(id)
 
 class holdings(db.Model):
     id = db.Column(db.Integer, primary_key=True)
