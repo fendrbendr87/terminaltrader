@@ -1,24 +1,12 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+{% block app_content %}
     <h1>Hello, {{ current_user.username }}. Your current balance is {{ balance }}.</h1>
     <h1>Would you like to BUY?</h1>
-    <form method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.ticker_symbol.label }}<br>
-            {{ form.ticker_symbol(size=32) }}<br>
-            {% for error in form.ticker_symbol.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.number_of_shares.label }}
-            {{ form.number_of_shares(size=32) }}<br>
-            {% for error in form.number_of_shares.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit }}</p>
-    </form>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
 {% endblock %}

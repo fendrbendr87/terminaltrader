@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+{% block app_content %}
     <h1>Hello, {{ current_user.username }}!</h1>
     <div><p><b>Here is your order history:</b></p></div>
     {% for orders in orderhistory %}
