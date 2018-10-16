@@ -124,3 +124,5 @@ TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nes
 2018-10-09 20:37:12,849 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
 2018-10-09 20:37:51,730 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
 2018-10-09 20:39:19,959 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
+2018-10-16 18:23:22,523 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
+2018-10-16 18:39:03,059 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
