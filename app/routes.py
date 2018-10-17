@@ -18,7 +18,7 @@ from app.email import send_password_reset_email
 @login_required
 def index():
     #PUT SOMETHING INTERESTING HERE
-    return render_template("index.html", title='Home', form = form, balances=round(get_user_balance(current_user), 2))
+    return render_template("index.html", title='Home', balances=round(get_user_balance(current_user), 2))
 
 @app.route('/')
 @app.route('/orderconf')
