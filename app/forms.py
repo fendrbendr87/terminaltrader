@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, RadioField, Form
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, RadioField, Form, SelectField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import accounts
 
@@ -43,3 +43,7 @@ class ResetPasswordForm(FlaskForm):
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Password Reset')
+
+class TradeTypeForm(FlaskForm):
+    trade_type = SelectField('Trade Type', choices=[('Buy', 'Buy'), ('Sell', 'Sell')])
+    submit = SubmitField('Submit Trade')

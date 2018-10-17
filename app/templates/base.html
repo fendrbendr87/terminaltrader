@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
             <div class="navbar-default">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -20,13 +20,19 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                    <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-user"></span>Register</a></li>
                     {% else %}
                     <li><a href="{{ url_for('uholdings') }}">Holdings</a></li>
                     <li><a href="{{ url_for('orderhistory') }}">Order History</a></li>
-                    <li><a href="{{ url_for('buy') }}">Buy</a></li>
-                    <li><a href="{{ url_for('sell') }}">Sell</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Trade
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('buy') }}">Buy</a></li>
+                            <li><a href="{{ url_for('sell') }}">Sell</a></li>
+                        </ul>
+                    <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     {% endif %}
                 </ul>
             </div>    

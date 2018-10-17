@@ -1,7 +1,7 @@
 from app import app, db
 from app import models
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm, TradeForm
+from app.forms import LoginForm, RegistrationForm, TradeForm, TradeTypeForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import accounts, holdings, orders
 from werkzeug.urls import url_parse
@@ -17,7 +17,8 @@ from app.email import send_password_reset_email
 @app.route('/index')
 @login_required
 def index():
-    return render_template("index.html", title='Home', balances=round(get_user_balance(current_user), 2))
+    #PUT SOMETHING INTERESTING HERE
+    return render_template("index.html", title='Home', form = form, balances=round(get_user_balance(current_user), 2))
 
 @app.route('/')
 @app.route('/orderconf')
