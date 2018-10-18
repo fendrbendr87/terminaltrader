@@ -1,7 +1,7 @@
 from app import app, db
 from app import models
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm, TradeForm, TradeTypeForm
+from app.forms import LoginForm, RegistrationForm, TradeForm, SearchHoldingForm, GetQuote
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import accounts, holdings, orders
 from werkzeug.urls import url_parse
@@ -20,16 +20,46 @@ def index():
     #PUT SOMETHING INTERESTING HERE
     return render_template("index.html", title='Home', balances=round(get_user_balance(current_user), 2))
 
-@app.route('/')
 @app.route('/orderconf')
 @login_required
 def orderconf():
     return render_template("orderconf.html", title='Order Confirmation')
 
+@app.route('/pricequote', methods=['GET', 'POST'])
+@login_required
+def pricequote():
+    form = GetQuote()
+    if form.validate_on_submit():
+        ticker_symbol=form.ticker_symbol.data
+        return redirect('/pricequoteresult/{}'.format(ticker_symbol))
+    return render_template("pricequote.html", title='Price Quote', form = form)
+
+@app.route('/pricequoteresult/<ticker_symbol>', methods=['GET','POST'])
+@login_required
+def pricequoteresult(ticker_symbol):
+    quote_result=quote(ticker_symbol)
+    return render_template("pricequoteresult.html", title='Quote Result', quote_result=round(quote_result, 2), ticker_symbol=ticker_symbol)
+
 @app.route('/holdings', methods=['GET'])
 @login_required
 def uholdings():
     return render_template("holdings.html", title='Holdings', userholdings=get_holdings(current_user))
+
+@app.route('/specificholdingsearch', methods=['GET', 'POST'])
+@login_required
+def specificholding():
+    form = SearchHoldingForm()
+    if form.validate_on_submit():
+        ticker_symbol=form.ticker_symbol.data
+        return redirect('/specificholdingresult/{}'.format(ticker_symbol))
+    return render_template("specificholdingsearch.html", title='Search Holdings', form = form)
+
+@app.route('/specificholdingresult/<ticker_symbol>', methods = ['GET', 'POST'])
+@login_required
+def holdings_specific(ticker_symbol):
+    current_holding_shares = get_holding(current_user=current_user, ticker_symbol=ticker_symbol)
+    return render_template("specificholdingresult.html", title='Specific Holding Result', number_of_shares=current_holding_shares, ticker_symbol=ticker_symbol)
+
 
 @app.route('/orderhistory', methods=['GET'])
 @login_required

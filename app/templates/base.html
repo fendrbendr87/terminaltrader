@@ -17,7 +17,7 @@
                 <a class="navbar-brand" href="{{ url_for('index') }}">WebTrader</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
@@ -32,10 +32,13 @@
                             <li><a href="{{ url_for('buy') }}">Buy</a></li>
                             <li><a href="{{ url_for('sell') }}">Sell</a></li>
                         </ul>
-                    <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                    </li>
+                    <li><a href="{{ url_for('specificholding') }}">Search Holdings</a></li>
+                    <li><a href="{{ url_for('pricequote') }}">Quote</a></li>
+                    <li class="nav navbar-nav navbar-left"><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>                    
                     {% endif %}
                 </ul>
-            </div>    
+            </div>
         </div>
     </nav>
 {% endblock %}

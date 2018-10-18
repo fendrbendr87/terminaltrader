@@ -44,6 +44,10 @@ class ResetPasswordForm(FlaskForm):
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Password Reset')
 
-class TradeTypeForm(FlaskForm):
-    trade_type = SelectField('Trade Type', choices=[('Buy', 'Buy'), ('Sell', 'Sell')])
-    submit = SubmitField('Submit Trade')
+class SearchHoldingForm(FlaskForm):
+    ticker_symbol = StringField('Ticker Symbol', validators=[DataRequired()])
+    submit = SubmitField('Search Holding')
+
+class GetQuote(FlaskForm):
+    ticker_symbol = StringField('Ticker Symbol', validators=[DataRequired()])
+    submit = SubmitField('Get Quote')

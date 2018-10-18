@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    {% if quote_result %}
+        <div><p><b>The current price of {{ ticker_symbol }} is: {{ quote_result }}</b></p></div>
+    {% else %}
+        <div><p><b>What the hell you trying to find Donald? The fountain of youth? Try again.</b></p></div>
+    {% endif %}
+{% endblock %}
