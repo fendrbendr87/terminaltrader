@@ -63,3 +63,5 @@ Traceback (most recent call last):
     return holding.number_of_shares
 AttributeError: 'list' object has no attribute 'number_of_shares'
 2018-10-17 23:07:07,012 INFO: WebTrader Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/__init__.py:50]
+2018-10-18 18:18:21,763 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
+2018-10-18 18:44:20,278 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]

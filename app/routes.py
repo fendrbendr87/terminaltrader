@@ -1,7 +1,7 @@
 from app import app, db
 from app import models
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm, TradeForm, SearchHoldingForm, GetQuote
+from app.forms import LoginForm, RegistrationForm, TradeForm, SearchHoldingForm, GetQuote, AssessmentForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import accounts, holdings, orders
 from werkzeug.urls import url_parse
@@ -24,6 +24,28 @@ def index():
 @login_required
 def orderconf():
     return render_template("orderconf.html", title='Order Confirmation')
+
+@app.route('/assessment', methods=['GET', 'POST'])
+@login_required
+def assessment():
+    form = AssessmentForm()
+    if form.validate_on_submit():
+        ticker_symbol = form.ticker_symbol.data
+        return redirect('/assess_result/{}'.format(ticker_symbol))
+    return render_template("assessment.html", title='Assessment', form=form)
+
+@app.route('/assess_result/<ticker_symbol>', methods=['GET', 'POST'])
+@login_required
+def assess_result(ticker_symbol):
+    current_holding_shares = get_holding(current_user=current_user, ticker_symbol=ticker_symbol)
+    tran_history = get_specific_orders(current_user=current_user, ticker_symbol=ticker_symbol)
+    current_price = quote(ticker_symbol)
+    if current_holding_shares:
+        current_value = current_price * current_holding_shares
+    else:
+        current_value = 0
+    return render_template("assess_result.html", title="Assessment Result", current_holding_shares = current_holding_shares, tran_history = tran_history, current_price = current_price, current_value = current_value, ticker_symbol = ticker_symbol)
+
 
 @app.route('/pricequote', methods=['GET', 'POST'])
 @login_required
@@ -181,6 +203,15 @@ def get_orders(current_user):
     account_pk=currentuser.id
     ordershistory=orders.query.filter_by(account_pk=account_pk).all()
     return ordershistory
+
+def get_specific_orders(current_user, ticker_symbol):
+    currentuser = accounts.query.filter_by(username=current_user.username).first()
+    account_pk = currentuser.id
+    specificorderhistory = orders.query.filter_by(account_pk=account_pk, ticker_symbol=ticker_symbol).all()
+    if specificorderhistory:
+        return specificorderhistory
+    else:
+        return None
 
 def create_holding(current_user, ticker_symbol, number_of_shares, price = 0):
     currentuser = accounts.query.filter_by(username=current_user.username).first()

@@ -51,3 +51,7 @@ class SearchHoldingForm(FlaskForm):
 class GetQuote(FlaskForm):
     ticker_symbol = StringField('Ticker Symbol', validators=[DataRequired()])
     submit = SubmitField('Get Quote')
+
+class AssessmentForm(FlaskForm):
+    ticker_symbol = StringField('Ticker Symbol', validators=[DataRequired()])
+    submit = SubmitField('Get Quote')

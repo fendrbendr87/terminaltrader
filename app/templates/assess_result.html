@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    {% if current_holding_shares %}
+        <div><p><b>Turns out you do have some of these {{ ticker_symbol }} shares.</b></p></div>
+        <div><p><b>You currently have {{ current_holding_shares }} shares of {{ ticker_symbol }}, with a total value of {{ current_value }}.</b></p></div>
+        <div><p><b>Here is your transaction history for {{ ticker_symbol }}:</b></p></div>
+        {% for orders in tran_history %}
+        <div><p>Time Transacted: {{ orders.timestamp }}. Nnumber of shares traded: {{ orders.trade_volume }} price: {{ orders.last_price }}</p></div>
+        {% endfor %}
+    {% else %}
+        <div><p><b>You don't have any of these shares Donald, stop drinking.</b></p></div>
+        <div><p><b>But if you wanted to buy some, they would cost you {{ current_price }} per share.</b></p></div>
+    {% endif %}
+{% endblock %}
