@@ -165,10 +165,10 @@ def get_holding(current_user, ticker_symbol):
     currentuser = accounts.query.filter_by(username=current_user.username).first()
     account_pk=currentuser.id
     holding=holdings.query.filter_by(account_pk=account_pk, ticker_symbol=ticker_symbol).all()
-    if holding[0].ticker_symbol == None:
-        return None
-    else:
+    if holding:
         return holding[0].number_of_shares
+    else:
+        return None
 
 def get_holdings(current_user):
     currentuser = accounts.query.filter_by(username=current_user.username).first()
