@@ -1,4 +1,4 @@
-2018-10-16 18:44:58,383 ERROR: Exception on / [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+2018-10-17 20:42:40,368 ERROR: Exception on /index [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,10 +12,40 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 20, in index
-    form = TradeTypeForm()
-NameError: global name 'TradeTypeForm' is not defined
-2018-10-16 18:45:05,103 ERROR: Exception on /index [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/routes.py", line 21, in index
+    return render_template("index.html", title='Home', balances=round(get_user_balance(current_user), 2))
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/base.html", line 53, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/index.html", line 9, in block "app_content"
+    {{ wtf.quick_form(form) }}
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 200, in template
+    {{ form.hidden_tag() }}
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+UndefinedError: 'form' is undefined
+2018-10-17 20:42:40,518 ERROR: Exception on /index [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,45 +59,37 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 20, in index
-    form = TradeTypeForm()
-NameError: global name 'TradeTypeForm' is not defined
-2018-10-16 18:45:06,494 ERROR: Exception on /index [GET] [in /home/gene/.local/lib/python2.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/routes.py", line 21, in index
+    return render_template("index.html", title='Home', balances=round(get_user_balance(current_user), 2))
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/gene/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/gene/.local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/GM/Desktop/webtrader/app/routes.py", line 20, in index
-    form = TradeTypeForm()
-NameError: global name 'TradeTypeForm' is not defined
-2018-10-16 18:45:32,684 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 18:49:29,592 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 18:52:49,216 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 18:53:50,475 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 18:54:26,437 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 18:57:22,687 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 19:28:31,352 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 19:50:14,247 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 19:50:41,668 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 19:52:58,551 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:04:19,658 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:08:31,984 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:26:26,801 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:27:19,004 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:27:41,220 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:34:46,702 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:38:11,315 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:41:30,798 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:42:30,776 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:48:29,819 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:49:32,604 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
-2018-10-16 20:50:59,562 INFO: WebTrader Startup [in /mnt/c/Users/GM/Desktop/webtrader/app/__init__.py:50]
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/base.html", line 53, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/templates/index.html", line 9, in block "app_content"
+    {{ wtf.quick_form(form) }}
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/gene/.local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 200, in template
+    {{ form.hidden_tag() }}
+  File "/home/gene/.local/lib/python2.7/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+UndefinedError: 'form' is undefined
+2018-10-17 20:42:59,864 INFO: WebTrader Startup [in /mnt/c/Users/Tyhebrewsaurus Rex/terminaltrader/app/__init__.py:50]
